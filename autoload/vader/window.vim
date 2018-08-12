@@ -127,7 +127,7 @@ function! vader#window#append(message, indent, ...)
   if get(a:, 1, 1)
     let message = substitute(message, '\s*$', '', '')
   endif
-  if !empty($VADER_ECHO_MESSAGES)
+  if g:vader_bang
     call vader#print_stderr(message."\n")
     return 0
   elseif !exists('s:console_buffered')
