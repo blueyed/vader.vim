@@ -94,6 +94,13 @@ function! vader#run(bang, ...) range
     endfor
 
     let stats = vader#assert#stat()
+    let successful = success + pending == total
+    let g:vader_result = {
+          \ 'total': total,
+          \ 'success': success,
+          \ 'pending': pending,
+          \ 'successful': successful,
+          \ }
     call vader#window#append(printf('Success/Total: %s/%s (%sassertions: %d/%d)',
           \ success, total, (pending > 0 ? pending . ' pending, ' : ''),
           \ stats[0], stats[1]), 0)
@@ -114,7 +121,7 @@ function! vader#run(bang, ...) range
       endif
 
       call s:print_stderr(g:vader_report)
-      if success + pending == total
+      if successful
         qall!
       else
         call s:print_stderr(printf('=== Failure summary: %d errors ===', len(qfl)))
