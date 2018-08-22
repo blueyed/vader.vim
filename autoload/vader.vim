@@ -173,6 +173,7 @@ elseif has('nvim')
     endfunction
   else
     function! vader#print_stderr(output) abort
+      let lines = split(a:output, '\n')
       call writefile(lines, '/dev/stderr', 'a')
     endfunction
   endif
