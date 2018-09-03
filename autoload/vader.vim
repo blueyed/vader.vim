@@ -184,6 +184,8 @@ elseif mode(1) ==# 'ce' || mode(1) ==# 'cv'  " -es/-Es (silent ex/Ex mode)
       verbose echon line."\n"
     endfor
   endfunction
+  " DEBUG
+  call vader#print_stderr(printf('NOTE: vader#print_stderr: using echon for mode %s', mode(1)))
 else
   " Cannot output single lines reliably in this case.
   let s:stderr_buffer = [
