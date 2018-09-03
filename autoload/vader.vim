@@ -177,7 +177,7 @@ elseif has('nvim')
       call writefile(lines, '/dev/stderr', 'a')
     endfunction
   endif
-elseif mode(1) ==# 'ce' || mode(1) ==# 'cv'  " -es (silent ex mode)
+elseif mode(1) ==# 'ce' || mode(1) ==# 'cv'  " -es/-Es (silent ex/Ex mode)
   function! vader#print_stderr(output) abort
     let lines = split(a:output, '\n')
     for line in lines
