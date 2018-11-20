@@ -122,7 +122,7 @@ function! vader#run(bang, ...) range
       if successful
         qall!
       else
-        call s:print_stderr(printf('=== Failure summary: %d errors ===', len(qfl)))
+        call vader#print_stderr(printf('=== Failure summary: %d errors ===', len(qfl)))
         let i = 0
         for entry in qfl
           let i += 1
@@ -131,7 +131,7 @@ function! vader#run(bang, ...) range
             let indent = repeat(' ', len(string(i)) + 2)
             let text = substitute(text, "\n", '\n'.indent, 'g')
           endif
-          call s:print_stderr(printf('%d. %s:%d: %s', i, entry.filename, entry.lnum, text))
+          call vader#print_stderr(printf('%d. %s:%d: %s', i, entry.filename, entry.lnum, text))
         endfor
         cq
       endif
